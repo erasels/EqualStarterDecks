@@ -17,14 +17,19 @@ public class DeckPatches
         static void ChangeDeck(ref IEnumerable<CardModel> __result)
         {
             var deck = __result.ToList();
-
-            // Remove strike if it wasn't changed by something else
-            var strike = deck.FirstOrDefault(c => c is StrikeIronclad);
-            if (strike != null)
-                deck.Remove(strike);
-
             
-            deck.Add(ModelDb.Card<eqsFlex>());
+            if(Config.IroncladFour) {
+                // Remove strike if it wasn't changed by something else
+                var strike = deck.FirstOrDefault(c => c is StrikeIronclad);
+                if (strike != null)
+                    deck.Remove(strike);
+            }
+
+            if (Config.IroncladFlex)
+            {
+                // Add Flex
+                deck.Add(ModelDb.Card<eqsFlex>());
+            }
 
             __result = deck;
         }
@@ -38,14 +43,17 @@ public class DeckPatches
         static void ChangeDeck(ref IEnumerable<CardModel> __result)
         {
             var deck = __result.ToList();
-            
-            var strike = deck.FirstOrDefault(c => c is StrikeSilent);
-            if (strike != null)
-                deck.Remove(strike);
-            
-            var defend = deck.FirstOrDefault(c => c is DefendSilent);
-            if (defend != null)
-                deck.Remove(defend);
+
+            if (Config.SilentFour)
+            {
+                var strike = deck.FirstOrDefault(c => c is StrikeSilent);
+                if (strike != null)
+                    deck.Remove(strike);
+
+                var defend = deck.FirstOrDefault(c => c is DefendSilent);
+                if (defend != null)
+                    deck.Remove(defend);
+            }
 
             __result = deck;
         }
