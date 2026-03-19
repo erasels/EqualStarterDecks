@@ -1,0 +1,11 @@
+{
+  "id": "EqualStarterDecks",
+  "name": "Equal Starter Decks",
+  "author": "erasels",
+  "description": "Standardizes the starting decks to all be 4/4 Strikes/Defends and 2 special cards. Features configurable in the mod options.",
+  "version": "v1.0.0",
+  "has_pck": true,
+  "has_dll": true,
+  "dependencies": ["BaseLib"],
+  "affects_gameplay": true
+}
