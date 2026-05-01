@@ -18,7 +18,7 @@ public class eqsFlex() : CustomCardModel(0, CardType.Skill, CardRarity.Basic, Ta
 
     public override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        var flexPower = await PowerCmd.Apply<eqsFlexPower>(Owner.Creature, DynamicVars.Strength.BaseValue, Owner.Creature, this);
+        var flexPower = await PowerCmd.Apply<eqsFlexPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars.Strength.BaseValue, Owner.Creature, this);
     }
 
     public override void OnUpgrade()
